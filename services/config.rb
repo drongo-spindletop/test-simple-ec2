@@ -67,7 +67,7 @@ coreo_aws_ec2_instance "${SERVER_NAME}${SUFFIX}" do
   action :define
   image_id "${AWS_LINUX_AMI}"
   size "${SERVER_SIZE}"
-  security_groups ["test"]
+  security_groups ["${SERVER_NAME}${SUFFIX}"]
 #  role "${SERVER_NAME}"
   ssh_key "${SERVER_KEYPAIR}"
   associate_public_ip true

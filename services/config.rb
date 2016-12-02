@@ -85,10 +85,10 @@ coreo_aws_ec2_instance "${SERVER_NAME}${SUFFIX}" do
           ]
 end
 
-#coreo_aws_ec2_autoscaling "${SERVER_NAME}${SUFFIX}" do
-#  action :sustain 
-#  minimum 3
-#  maximum 3
-#  server_definition "${SERVER_NAME}${SUFFIX}"
-#  subnet "${PUBLIC_SUBNET_NAME}"
-#end
+coreo_aws_ec2_autoscaling "${SERVER_NAME}${SUFFIX}" do
+  action :sustain 
+  minimum 3
+  maximum 3
+  server_definition "${SERVER_NAME}${SUFFIX}"
+  subnet "subnet-4740fb22"
+end

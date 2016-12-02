@@ -87,8 +87,8 @@ end
 
 coreo_aws_ec2_autoscaling "${SERVER_NAME}${SUFFIX}" do
   action :sustain 
-  minimum 3
-  maximum 3
+  minimum 1
+  maximum 1
   server_definition "${SERVER_NAME}${SUFFIX}"
   subnet "subnet-4740fb22"
 end

@@ -1,0 +1,6 @@
+[submodule "stack-cloudcoreo-vpc-public/extends"]
+	path = stack-cloudcoreo-vpc-public/extends
+	url = https://github.com/drongo-spindletop/test-cloudcoreo-vpc-public.git
+[submodule "extends"]
+	path = extends
+	url = https://github.com/drongo-spindletop/test-servers-base.git

@@ -36,7 +36,7 @@ end
 
 coreo_aws_vpc_routetable "${PUBLIC_ROUTE_NAME}" do
    action :find
-   #main "yes"
+   main "yes"
    vpc "${VPC_NAME}"
 end
 

@@ -34,7 +34,7 @@ coreo_aws_vpc_vpc "${VPC_NAME}" do
    name "${VPC_NAME}"
 end
 
-coreo_aws_vpc_routetable "${PUBLIC_ROUTE_NAME}" do
+coreo_aws_vpc_routetable "" do
    action :find
    vpc "${VPC_NAME}"
 end

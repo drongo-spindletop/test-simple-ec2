@@ -44,30 +44,31 @@
 #   vpc "${VPC_NAME}"
 # end
 
-#coreo_aws_ec2_securityGroups "${SERVER_NAME}${SUFFIX}" do
-#  action :sustain
-#  description "Server security group"
-#  vpc "${VPC_NAME}"
-#  allows [ 
-#          { 
-#            :direction => :ingress,
-#            :protocol => :tcp,
-#            :ports => ${SERVER_INGRESS_PORTS},
-#            :cidrs => ${SERVER_INGRESS_CIDRS}
-#          },{ 
-#            :direction => :egress,
-#            :protocol => :tcp,
-#            :ports => ["0..65535"],
-#            :cidrs => ["0.0.0.0/0"]
-#          }
-#    ]
-#end
+coreo_aws_ec2_securityGroups "${SERVER_NAME}${SUFFIX}" do
+  action :sustain
+  description "Server security group"
+  vpc "${VPC_NAME}"
+  allows [ 
+          { 
+            :direction => :ingress,
+            :protocol => :tcp,
+            :ports => ${SERVER_INGRESS_PORTS},
+            :cidrs => ${SERVER_INGRESS_CIDRS}
+          },{ 
+            :direction => :egress,
+            :protocol => :tcp,
+            :ports => ["0..65535"],
+            :cidrs => ["0.0.0.0/0"]
+          }
+    ]
+end
 
 coreo_aws_ec2_instance "${SERVER_NAME}${SUFFIX}" do
   action :define
   image_id "${AWS_LINUX_AMI}"
   size "${SERVER_SIZE}"
-  security_groups ["test"]
+  #security_groups ["test"]
+  security_groups ["${SERVER_NAME}${SUFFIX}"]
   ssh_key "${SERVER_KEYPAIR}"
   associate_public_ip true
   upgrade_trigger "2"

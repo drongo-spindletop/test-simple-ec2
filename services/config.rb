@@ -31,7 +31,7 @@ coreo_aws_vpc_vpc "${VPC_NAME}" do
    action :find
    cidr "${VPC_CIDR}"
    #internet_gateway true
-   Name "${VPC_NAME}"
+   tags "${VPC_NAME}"
 end
 
 coreo_aws_vpc_routetable "${PUBLIC_ROUTE_NAME}" do

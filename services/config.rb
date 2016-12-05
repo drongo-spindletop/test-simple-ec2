@@ -27,7 +27,7 @@
 # # they are :find so if they do not exist, this composite will throw an error
 # # use this composite in conjunction with another composite (run before) like vpc-network-only
 # #
-# coreo_aws_vpc_vpc "${VPC_NAME}" do
+#coreo_aws_vpc_vpc "${VPC_NAME}" do
 #   action :find
 #   cidr "${VPC_CIDR}"
 #   internet_gateway true
@@ -44,24 +44,24 @@
 #   vpc "${VPC_NAME}"
 # end
 
-coreo_aws_ec2_securityGroups "${SERVER_NAME}${SUFFIX}" do
-  action :sustain
-  description "Server security group"
-  vpc "${VPC_NAME}"
-  allows [ 
-          { 
-            :direction => :ingress,
-            :protocol => :tcp,
-            :ports => ${SERVER_INGRESS_PORTS},
-            :cidrs => ${SERVER_INGRESS_CIDRS}
-          },{ 
-            :direction => :egress,
-            :protocol => :tcp,
-            :ports => ["0..65535"],
-            :cidrs => ["0.0.0.0/0"]
-          }
-    ]
-end
+#coreo_aws_ec2_securityGroups "${SERVER_NAME}${SUFFIX}" do
+#  action :sustain
+#  description "Server security group"
+#  vpc "${VPC_NAME}"
+#  allows [ 
+#          { 
+#            :direction => :ingress,
+#            :protocol => :tcp,
+#            :ports => ${SERVER_INGRESS_PORTS},
+#            :cidrs => ${SERVER_INGRESS_CIDRS}
+#          },{ 
+#            :direction => :egress,
+#            :protocol => :tcp,
+#            :ports => ["0..65535"],
+#            :cidrs => ["0.0.0.0/0"]
+#          }
+#    ]
+#end
 
 coreo_aws_ec2_instance "${SERVER_NAME}${SUFFIX}" do
   action :define

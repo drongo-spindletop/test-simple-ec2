@@ -68,7 +68,8 @@ end
 
 coreo_aws_ec2_instance "${SERVER_NAME}${SUFFIX}" do
   action :define
-  image_id "${AWS_LINUX_AMI}"
+  #image_id "${AWS_LINUX_AMI}"
+  image_id "ami-a9d276c9"
   size "${SERVER_SIZE}"
   security_groups ["${SERVER_NAME}${SUFFIX}"]
   ssh_key "${SERVER_KEYPAIR}"

@@ -27,11 +27,12 @@
 # # they are :find so if they do not exist, this composite will throw an error
 # # use this composite in conjunction with another composite (run before) like vpc-network-only
 # #
-#coreo_aws_vpc_vpc "${VPC_NAME}" do
-#   action :find
-#   cidr "${VPC_CIDR}"
-#   internet_gateway true
-# end
+coreo_aws_vpc_vpc "${VPC_NAME}" do
+   action :find
+   #cidr "${VPC_CIDR}"
+   #internet_gateway true
+   vpc "${VPC_NAME}"
+end
 
 # coreo_aws_vpc_routetable "${PUBLIC_ROUTE_NAME}" do
 #   action :find
@@ -67,7 +68,6 @@ coreo_aws_ec2_instance "${SERVER_NAME}${SUFFIX}" do
   action :define
   image_id "${AWS_LINUX_AMI}"
   size "${SERVER_SIZE}"
-  #security_groups ["test"]
   security_groups ["${SERVER_NAME}${SUFFIX}"]
   ssh_key "${SERVER_KEYPAIR}"
   associate_public_ip true
@@ -84,5 +84,5 @@ coreo_aws_ec2_autoscaling "${SERVER_NAME}${SUFFIX}" do
   minimum 1
   maximum 1
   server_definition "${SERVER_NAME}${SUFFIX}"
-  subnet "subnet-4740fb22"
+  subnet "${PUBLIC_SUBNET_NAME}"
 end

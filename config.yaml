@@ -46,6 +46,8 @@ variables:
         default:
             - 80
             - 22
+            - 1022
+	    - 8080
         description: Ports to open up in the server security group
         required: true
         type: array

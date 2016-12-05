@@ -29,7 +29,7 @@
 # #
 coreo_aws_vpc_vpc "${VPC_NAME}" do
    action :find
-   cidr "${VPC_CIDR}"
+   #cidr "${VPC_CIDR}"
    #internet_gateway true
    tags "${VPC_NAME}"
 end
